@@ -1,0 +1,7 @@
+Feature: To Test the AddTariff plan
+  I want to use this template for my feature file
+
+  Scenario: To verify the Tariff plan
+    Given The user is in Add Tariff plan page
+    When The user fill the details
+    Then Tariff plan added

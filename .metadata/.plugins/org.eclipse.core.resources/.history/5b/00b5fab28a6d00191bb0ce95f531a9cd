@@ -1,0 +1,46 @@
+package sample1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class demo {
+static WebDriver driver;
+@Given("the user is in add customer page")
+public void the_user_is_in_add_customer_page() {
+	System.setProperty("webdriver.chrome.driver",
+			"C:\\Users\\bommu\\eclipse-workspace\\Selenium\\driver\\chromedriver.exe");
+	driver = new ChromeDriver();
+	driver.get("https://www.facebook.com/");
+
+}
+
+@When("the user fill in the customer details")
+public void the_user_fill_in_the_customer_details() {
+	WebElement txtusername = driver.findElement(By.id("email"));
+	txtusername.sendKeys("hello");
+
+	WebElement txtpass = driver.findElement(By.id("pass"));
+	txtpass.sendKeys("java");
+}
+
+@When("the user click on submit button")
+public void the_user_click_on_submit_button() {
+WebElement button = driver.findElement(By.xpath("Log In"));
+button.click();
+
+}
+
+@Then("the user should see the customer id is generated")
+public void the_user_should_see_the_customer_id_is_generated() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new cucumber.api.PendingException();
+}
+
+
+}

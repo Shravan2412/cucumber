@@ -1,0 +1,49 @@
+package sample1;
+
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
+
+public class AddTariff {
+	static WebDriver driver;
+
+	@Given("The user is in Add Tariff plan page")
+
+	public void the_user_is_in_Add_Tariff_plan_page() {
+
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\\\Users\\\\bommu\\\\eclipse-workspace\\\\Selenium\\\\driver\\\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("http://demo.guru99.com/telecom/index.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//a[@href='addtariffplans.php'] [1]")).click();
+	}
+
+	@When("The user fill the details")
+	public void the_user_fill_the_details(DataTable dataTable) {
+		
+		List<Map<String,String>> tariff = dataTable.asMaps(String.class,String.class);
+		driver.findElement(By.id("rental1")).sendKeys(tariff.get(1).get("Mrent"));
+		driver.findElement(By.id("local_minutes")).sendKeys(tariff.get(1).get("LMin"));
+		driver.findElement(By.id("inter_minutes")).sendKeys(tariff.get(2).get("Imin"));
+		driver.findElement(By.id("sms_pack")).sendKeys(tariff.get(2).get("smspack"));
+		driver.findElement(By.id("minutes_charges")).sendKeys(tariff.get(1).get("Lpmin"));
+		driver.findElement(By.id("inter_charges")).sendKeys(tariff.get(0).get("IpMin"));
+		driver.findElement(By.id("sms_charges")).sendKeys(tariff.get(1).get("Smscharge"));
+		driver.findElement(By.name("submit")).click();
+	}
+
+	@Then("Tariff plan added")
+	public void tariff_plan_added() {
+	driver.quit();
+	}
+
+}

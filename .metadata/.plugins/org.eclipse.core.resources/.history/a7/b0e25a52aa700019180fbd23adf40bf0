@@ -1,0 +1,12 @@
+Feature: Add tariff plans
+
+
+  Scenario: Add Tariffs
+    Given The user in add tariff plan pages
+    When user will the validate tariffs
+    |Monthrental|LocalMinute|Incomingminute|smspack|Localpminutes|IncomingpMinute|Smscharge|
+    |10|11|12|13|14|15|16|
+    |20|21|22|23|24|25|25|
+    |30|31|32|33|34|35|36|
+    And add the traiff by click the submit 
+    Then congratulations traiff added

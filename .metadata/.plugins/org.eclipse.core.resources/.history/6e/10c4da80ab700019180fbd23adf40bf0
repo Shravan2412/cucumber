@@ -1,0 +1,34 @@
+package sample1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class TariffPlan {
+	static WebDriver driver;
+	@Given("The user is in Add Tariff plan page")
+	public void the_user_is_in_Add_Tariff_plan_page() {
+			System.setProperty("webdriver.chrome.driver",
+					"C:\\Users\\M\\eclipse-1\\Cucumberfirst\\driver\\chromedriver.exe");
+			 driver = new ChromeDriver();
+			driver.get("http://demo.guru99.com/telecom/index.html");
+			driver.manage().window().maximize();
+			driver.findElement(By.xpath("//a[@href='addtariffplans.php'] [1]")).click();
+		}
+
+	
+
+	@When("The user fill the details")
+	public void the_user_fill_the_details() {
+	}
+
+	@Then("Tariff plan added")
+	public void tariff_plan_added() {
+	}
+
+
+}
